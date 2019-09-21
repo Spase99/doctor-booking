@@ -1,0 +1,201 @@
+$calender_transition: 0.5s;
+$calender_transition_delay: $calender_transition + 0.1s;
+
+#frontend .hfl-success-btn {
+  border-radius: 0;
+  @include button-variant(#c8d400, #c8d400);
+}
+
+.fullscreen-backdrop-overlay {
+  position: fixed;
+  z-index: 1050;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+}
+
+#frontend {
+  font-family: Helvetica, Arial, sans-serif;
+  color: #374049;
+
+  input.form-control {
+    border-radius: 0;
+  }
+
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+  }
+
+  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+  }
+
+  hr.heading-hr {
+    width: 180px;
+    background-color: #37404a;
+    border: 0;
+    height: 2px;
+    margin: 20px auto;
+  }
+
+  .main-header {
+    padding: 15px;
+    text-align: center;
+    margin-bottom: 50px;
+    background: #8fc4da;
+    height: 70px;
+    position: relative;
+  }
+
+  .main-header .logo {
+    height: 80px;
+    width: auto;
+    margin: 0 auto;
+    position: absolute;
+    left: 50%;
+    top: 30px;
+    transform: translateX(-50%);
+  }
+
+  .current-booking-doc-heading {
+    font-size: 2em;
+    letter-spacing: .15em;
+    max-width: 550px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .hfl-badge {
+    display: inline-block;
+    background: #dcebf6;
+    border: 1px solid #88b9dd;
+    padding: 7px 10px;
+    font-size: 13px;
+    margin: 0 4px 8px 4px;
+    cursor: pointer;
+    border-radius: 0;
+    outline-color: transparent;
+  }
+
+  .hfl-badge.active {
+    background: #c8d400;
+    border: 1px solid #a0a900;
+    color: #fff;
+  }
+
+  .success-section {
+    text-align: center;
+  }
+
+  .pay-types, .appointment-types {
+    text-align: center;
+    margin: 10px 0;
+  }
+
+  #app {
+    margin-bottom: 50px;
+  }
+
+  #app .vdp-datepicker__calendar {
+    margin: 0 auto;
+  }
+
+  #app .datepicker-wrapper {
+    margin-bottom: 30px;
+  }
+
+  #app .datepicker-wrapper,
+  #app .day-slots-wrapper {
+    width: 100%;
+    float: left;
+    transition: width $calender_transition ease-in-out;
+  }
+
+  #app .section1 {
+    overflow-x: hidden;
+  }
+
+  #app .section1::after {
+    content: " ";
+      display: table;
+      clear: both;
+  }
+
+  #app .cell.day.selected {
+    background: #c8d400;
+    color: #fff;
+  }
+
+  .hfl-card {
+    background: #fafafa;
+    border: 1px solid #a0a0a0;
+    padding: 20px;
+  }
+
+  .hfl-card-green {
+    background: rgba(201, 212, 0, 0.11);
+    border: 1px solid #c8d400;
+  }
+
+  .payment-info {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .section2 .hfl-card,
+  .section2 .back-text {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .section2 .back-text .btn-link {
+    padding-left: 0;
+    color: #333;
+  }
+
+  .section2 .hfl-card .btn {
+    border-radius: 0;
+  }
+
+  @media screen and (min-width: 996px) {
+    .main-header {
+      height: 120px;
+      margin-bottom: 75px;
+    }
+
+    .main-header .logo {
+      height: 180px;
+      top: 0;
+    }
+
+    #app .day-slots-wrapper {
+      visibility: hidden;
+      opacity: 0;
+      max-height: 0;
+      width: 0;
+      transition:
+        width $calender_transition ease-in-out,
+        opacity $calender_transition ease-in-out $calender_transition_delay,
+        visibility $calender_transition ease-in-out $calender_transition_delay,
+        max-height 0s ease-in-out $calender_transition_delay;
+    }
+
+    #app .show-day-slots {
+      overflow-y: hidden;
+
+      .datepicker-wrapper,
+      .day-slots-wrapper {
+        width: 50%;
+        margin-bottom: 0;
+      }
+
+      .day-slots-wrapper {
+        visibility: visible;
+        opacity: 1;
+        max-height: 10000px;
+      }
+    }
+  }
+}

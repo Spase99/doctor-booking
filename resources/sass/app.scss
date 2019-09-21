@@ -1,0 +1,61 @@
+// Import Custom SB Admin 2 Variables (Overrides Default Bootstrap Variables)
+@import "variables.scss";
+
+// Import Bootstrap
+@import "~bootstrap/scss/bootstrap";
+@import "~@fortawesome/fontawesome-free/css/all.css";
+
+// Import Custom SB Admin 2 Mixins and Components
+@import "mixins.scss";
+@import "global.scss";
+@import "utilities.scss";
+
+// Custom Components
+@import "dropdowns.scss";
+@import "navs.scss";
+@import "buttons.scss";
+@import "cards.scss";
+@import "charts.scss";
+@import "login.scss";
+@import "error.scss";
+@import "footer.scss";
+
+// Custom Styles
+@import "custom/header";
+@import "custom/calendar";
+@import "custom/frontend";
+@import "custom/reception-patient-calendar";
+
+.navbar-laravel {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+#rooms .edit, #doctors .edit {
+  display:none;
+}
+
+#rooms .editing label, #doctors .editing label {
+  display:none;
+}
+#rooms .editing .edit, #doctors .editing .edit {
+  display:inline;
+}
+
+/*.active { background:yellow; }*/
+.modal-mid {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  background:lightgreen;
+  width:400px;
+  height:250px;
+  z-index:999;
+}
+.topcorner{
+  position:absolute;
+  top:0;
+  right:0;
+}

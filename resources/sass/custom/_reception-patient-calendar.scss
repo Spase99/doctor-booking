@@ -1,0 +1,47 @@
+.reception-patient-calendar {
+  .hfl-badge {
+    @extend .btn, .btn-sm;
+    @include button-variant(#efefef, #efefef);
+    margin: 0 15px 10px 0;
+  }
+
+  .hfl-badge.active {
+    @include button-variant($blue, $blue);
+  }
+
+  .pay-types, .appointment-types {
+    margin-bottom: 15px;
+  }
+
+  .datepicker-wrapper {
+    margin-bottom: 25px;
+  }
+
+  .datepicker-wrapper .cell.day.selected {
+    background: $blue;
+    color: $white;
+  }
+
+  .section2, .section1 {
+    margin: 0 !important;
+  }
+
+  .hfl-success-btn  {
+    @include button-variant($blue, $blue);
+  }
+
+  @include media-breakpoint-up(lg) {
+    .datepicker-wrapper {
+      margin-bottom: 0;
+      width: 50%;
+      float: left;
+      padding-right: 15px;
+    }
+
+    .day-slots-wrapper {
+      width: 50%;
+      float: right;
+      padding-left: 15px;
+    }
+  }
+}

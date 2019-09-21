@@ -1,0 +1,1 @@
+{"google_eventid":"770gt3f8l71e2l6g59ojlkch14","start":"2019-06-03 12:00:00","end":"2019-06-03 12:30:00","description":"asdf asdf\nStandardtermin\nTel: 345\nE-Mail: da@example.org","doctor_id":2,"updated_at":"2019-05-28 21:27:46","created_at":"2019-05-28 21:27:46","id":5}

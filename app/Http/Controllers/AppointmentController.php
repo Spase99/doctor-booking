@@ -24,12 +24,9 @@ class AppointmentController extends Controller {
 
         $hasAppointmentsConfigured = $payTypes->isNotEmpty();
         $noTurninMessage = env('NO_TURNIN_MESSAGE', 'Bitte beachten Sie, dass Honorarnoten nicht von der Krankenkasse übernommen werden.');
+        $payTypes = json_encode($payTypes); // Transform for JS
 
-        // Transform for JS
-        $payTypes = json_encode($payTypes);
-
-        return view('frontend.patient', compact('hasAppointmentsConfigured', 'doctor',
-            'payTypes', 'noTurninMessage'));
+        return view('frontend.patient', compact('hasAppointmentsConfigured', 'doctor', 'payTypes', 'noTurninMessage'));
     }
 
     public function receptionIndex(Request $request) {

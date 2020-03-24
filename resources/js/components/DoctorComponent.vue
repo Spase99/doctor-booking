@@ -99,6 +99,7 @@
                             Dieses Feld ist ein Pflichtfeld.
                         </div>
                     </div>
+
                     <div class="form-group">
                         <label for="newDocPhone">Telefon</label>
                         <input id="newDocPhone" class="form-control" type="text" v-model="new_doc.phone" required>
@@ -106,6 +107,7 @@
                             Dieses Feld ist ein Pflichtfeld.
                         </div>
                     </div>
+
                     <div class="form-group">
                         <label for="newDocEmail">E-Mail</label>
                         <input id="newDocEmail" class="form-control" type="text" v-model="new_doc.email" required>
@@ -113,6 +115,7 @@
                             Dieses Feld ist ein Pflichtfeld.
                         </div>
                     </div>
+
                     <div class="form-group">
                         <label for="newDocURL">URL:</label>
                         <input id="newDocURL" class="form-control" type="text" v-model="new_doc.url_slug" required>
@@ -120,6 +123,7 @@
                             Dieses Feld ist ein Pflichtfeld.
                         </div>
                     </div>
+
                     <div class="form-group">
                         <label for="newDocCanTurnIn">Einreichbar:</label>
                         <input id="newDocCanTurnIn" type="checkbox" v-model="new_doc.can_turn_in">
@@ -127,6 +131,7 @@
                             Dieses Feld ist ein Pflichtfeld.
                         </div>
                     </div>
+
                     <div class="form-group">
                         <label for="newDocGoogle">Google-Account:</label>
                         <input id="newDocGoogle" class="form-control" aria-describedby="newDocGoogleHelp" type="text" v-model="new_doc.google_account" required>
@@ -227,6 +232,7 @@
 </script>
 
 <style scoped>
+
 .button-wrapper--two-buttons {
     width: 105px !important;
 }

@@ -64,6 +64,7 @@ class ApiDoctorController extends Controller {
         if (!$doctor->hasRole('doctor')) {
             response()->json(['error' => true]);
         }
+
         return response()->json(['ok' => $doctor->delete()]);
     }
 
@@ -106,4 +107,5 @@ class ApiDoctorController extends Controller {
 
         return response()->json($doctor->only('id', 'name', 'email', 'phone', 'url_slug'));
     }
+    
 }

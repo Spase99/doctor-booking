@@ -32,8 +32,6 @@ Route::group(['prefix' => '/bookings'], function () {
     Route::get('/{room}', 'ApiBookingController@listBookings');
 });
 
-
-
 Route::group(['prefix' => 'rooms'], function () {
     Route::get('/', 'ApiRoomController@list');
     Route::post('/', 'ApiRoomController@add');

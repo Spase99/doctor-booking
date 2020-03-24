@@ -158,16 +158,12 @@
 <script>
     import {FullCalendar} from 'vue-full-calendar';
     import bootstrapPlugin from '@fullcalendar/bootstrap';
-
     import 'fullcalendar/dist/locale/de-at'
     import 'fullcalendar/dist/fullcalendar.css'
     import Datepicker from 'vuejs-datepicker';
     import {de} from 'vuejs-datepicker/dist/locale'
-
     import * as moment from 'moment'
-
     moment.locale("de-at");
-
     function dumpNotEqual(message, exp1, exp2) {
         var res = exp1 !== exp2;
         console.log(message + res);
@@ -300,9 +296,7 @@
                 }
             },
             conflictingEventsAfter: function (newEvent) {
-                return function (otherEvent) {
-                    //console.log("Not same day: "+(newEvent.start.day()  !== otherEvent.start.day()));
-                    //console.log("Same doctor: "+(newEvent.doctor_id === otherEvent.doctor_id));
+                return function (otherEvent) {                    
                     if (newEvent.start.day() !== otherEvent.start.day()
                         || newEvent.doctor_id == otherEvent.doctor_id
                         || newEvent.room_id != otherEvent.room_id) { // note: types don't match!
@@ -333,7 +327,6 @@
                     }
 
                     // TODO: Überprüfen ob Termintyp vorhanden ist, außer es wird von der Rezeption gebucht
-
                     event.doctor_id = this.doctor.id;
                     event.room_id = this.createRoom.id;
                     if (this.isBreakNeededBefore(event)) {
@@ -429,7 +422,6 @@
                                 'border-color': '#ca2819'
                             });
                         }
-
                         // Farben für die Räume: Gelb Orange Rot Grün Blau
                         var roomStyles = [
                             // Room #1

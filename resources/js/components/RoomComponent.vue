@@ -15,16 +15,16 @@
                         <tr v-for="room in rooms" :key="room.id" :class="{ editing: room == editedRoom }">
                             <td>
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <span @dblclick="editRoom(room)" readonly class="form-control-plaintext" v-if="editedRoom != room">{{ room.name }}</span>
+                                    <span @dblclick="editRoom(room)" readonly class="form-control-plaintext" v-if="editedRoom !== room">{{ room.name }}</span>
                                     <input class="edit form-control" type="text"
                                         v-model="room.name"
                                         @keyup.enter="doneEdit(room)"
-                                        @keyup.esc="cancelEdit(room)" v-room-focus="editedRoom == room">
+                                        @keyup.esc="cancelEdit(room)" v-room-focus="editedRoom === room">
                                     <div class="ml-3 text-right button-wrapper--two-buttons" v-show="room != editedRoom">
                                         <button class="btn btn-sm btn-danger btn-circle" data-toggle="modal"  v-bind:data-target="'#delete-room-' + room.id + '-modal'"><i class="fas fa-trash"></i></button>
                                         <button class="btn btn-sm btn-primary btn-circle ml-2" @click="editRoom(room)"><i class="fas fa-edit"></i></button>
                                     </div>
-                                    <div class="ml-3 text-right button-wrapper--two-buttons" v-show="room == editedRoom">
+                                    <div class="ml-3 text-right button-wrapper--two-buttons" v-show="room === editedRoom">
                                         <button class="btn btn-sm btn-secondary btn-circle" @click="cancelEdit(room)"><i class="fas fa-times"></i></button>
                                         <button class="btn btn-sm btn-success btn-circle ml-2" @click="doneEdit(room)"><i class="fas fa-check"></i></button>
                                     </div>
@@ -149,7 +149,9 @@
 </script>
 
 <style scoped>
+
 .button-wrapper--two-buttons {
     min-width: 85px !important;
 }
+
 </style>

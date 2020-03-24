@@ -20,7 +20,7 @@
                 <h6 class="m-0 font-weight-bold text-primary">Ausnahmen</h6>
             </div>
             <div class="card-body">
-                <div v-for="exception in exceptions">
+                <div v-for="(exception, index) in exceptions" :key="index">
                     {{ exception.exception_date }}
                     ({{ exception.start }} - {{ exception.end }})
                     <button @click="deleteException(exception)" class="btn btn-danger">X</button>
@@ -41,14 +41,14 @@
                     <div class="modal-body">
                         <p><strong>{{ selectedEvent.title }}</strong></p>
                         <div>
-                            <button v-if="" @click="setEndDate" class="btn btn-primary mt-2" data-dismiss="modal">Letzter Termin</button>
+                            <button v-if="true" @click="setEndDate" class="btn btn-primary mt-2" data-dismiss="modal">Letzter Termin</button>
                         </div>
                         <div>
-                            <button v-if=""
+                            <button v-if="false"
                                     @click="addException" class="btn btn-danger mt-2" data-dismiss="modal">Ausnahme hinzufügen</button>
                         </div>
                         <div>
-                            <button v-if="" @click="deleteEvent" class="btn btn-danger mt-2" data-dismiss="modal">!!!Wiederholungsbuchung löschen!!!</button>
+                            <button v-if="true" @click="deleteEvent" class="btn btn-danger mt-2" data-dismiss="modal">!!!Wiederholungsbuchung löschen!!!</button>
                         </div>
                     </div>
                 </div>
@@ -68,7 +68,7 @@
                     <div class="modal-body">
                         <p><strong>{{ selectedEvent.title }}</strong></p>
                         <div>
-                            <button v-if="" @click="deleteEvent" class="btn btn-danger mt-2" data-dismiss="modal">Einzeltermin löschen</button>
+                            <button v-if="true" @click="deleteEvent" class="btn btn-danger mt-2" data-dismiss="modal">Einzeltermin löschen</button>
                         </div>
                     </div>
                 </div>

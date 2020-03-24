@@ -18,6 +18,7 @@ class ApiAppointmentController extends Controller {
     /**
      * @var AppointmentService
      */
+
     private $appointmentService;
 
     public function __construct(AppointmentService $appointmentService) {
@@ -62,7 +63,6 @@ class ApiAppointmentController extends Controller {
         } catch (Exception $e) {
             $response = ['error' => true, 'message' => $e->getMessage()];
         }
-
         return response()->json($response);
     }
 }

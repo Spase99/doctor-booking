@@ -23,6 +23,5 @@ class DoctorController extends Controller
         $doc->save();
 
         return redirect(route('doctor.profile'));
-
     }
 }

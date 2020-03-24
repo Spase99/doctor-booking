@@ -40,8 +40,7 @@ class ApiBookingController extends Controller {
         room_bookings.deleted_at IS NULL AND ((weekly_repeat = 0 AND room_bookings.start >= ? AND room_bookings.end <= ?) /* single booking */
         OR (weekly_repeat = 1 AND room_bookings.start <= ? AND (room_bookings.repeat_until >= ? || room_bookings.repeat_until <= ?))) /* mutliple booking */
           AND room_bookings.id NOT IN (SELECT booking_id FROM booking_exceptions WHERE DATE(exception_date) >= ? AND DATE(exception_date) <= ?) 
-        ",
-            [$room->id, $start, $end, $end, $start, $end, $start, $end]); // should be begin of week, not now
+        ", [$room->id, $start, $end, $end, $start, $end, $start, $end]); // should be begin of week, not now
 
         $length = count($bookings);
         for ($i = 0; $i < $length; $i++) {
@@ -111,22 +110,21 @@ class ApiBookingController extends Controller {
 
     public function getExceptions(Request $request, Doctor $doctor) {
         $exceptions = DB::select("SELECT booking_exceptions.id as exception_id, booking_id, DATE_FORMAT(exception_date, '%d.%m.%Y') as exception_date, TIME_FORMAT(room_bookings.start, '%H:%i') as start, 
-       TIME_FORMAT(room_bookings.end, '%H:%i') as end FROM booking_exceptions
-JOIN room_bookings ON booking_exceptions.booking_id = room_bookings.id
-JOIN users ON room_bookings.doctor_id = users.id
-WHERE users.id = :doctor_id AND exception_date >= NOW() - INTERVAL 7 DAY", ['doctor_id' => $doctor->id]);
+            TIME_FORMAT(room_bookings.end, '%H:%i') as end FROM booking_exceptions
+        JOIN room_bookings ON booking_exceptions.booking_id = room_bookings.id
+        JOIN users ON room_bookings.doctor_id = users.id
+        WHERE users.id = :doctor_id AND exception_date >= NOW() - INTERVAL 7 DAY", ['doctor_id' => $doctor->id]);
 
         return response()->json($exceptions);
     }
 
     public function getAllExceptions(Request $request) {
         $exceptions = DB::select("SELECT booking_exceptions.id as exception_id, booking_id, 
-       DATE_FORMAT(exception_date, '%d.%m.%Y') as exception_date, TIME_FORMAT(room_bookings.start, '%H:%i') as start, 
-       TIME_FORMAT(room_bookings.end, '%H:%i') as end, users.name as doctor_name FROM booking_exceptions
-JOIN room_bookings ON booking_exceptions.booking_id = room_bookings.id
-JOIN users ON room_bookings.doctor_id = users.id
-WHERE exception_date >= NOW() - INTERVAL 7 DAY");
-
+        DATE_FORMAT(exception_date, '%d.%m.%Y') as exception_date, TIME_FORMAT(room_bookings.start, '%H:%i') as start, 
+            TIME_FORMAT(room_bookings.end, '%H:%i') as end, users.name as doctor_name FROM booking_exceptions
+        JOIN room_bookings ON booking_exceptions.booking_id = room_bookings.id
+        JOIN users ON room_bookings.doctor_id = users.id
+        WHERE exception_date >= NOW() - INTERVAL 7 DAY");
         return response()->json($exceptions);
     }
 }
